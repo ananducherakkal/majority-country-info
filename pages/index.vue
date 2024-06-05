@@ -2,8 +2,7 @@
   <div>
     <Button />
     <Input />
-    sdf
-    <Autocomplete />
+    <Combobox />
   </div>
 </template>
 
