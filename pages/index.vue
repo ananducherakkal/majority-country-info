@@ -1,9 +1,9 @@
 <template>
   <div>
     <Button />
-    sdf
-    <CountryInfoMask />
     <Input />
+    sdf
+    <Autocomplete />
   </div>
 </template>
 
