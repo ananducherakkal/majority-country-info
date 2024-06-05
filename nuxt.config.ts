@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "shadcn-nuxt"],
   css: ["~/assets/css/main.css"],
   googleFonts: {
     families: {
@@ -16,5 +16,9 @@ export default defineNuxtConfig({
     preload: false,
     download: true,
     base64: false,
+  },
+  shadcn: {
+    prefix: "",
+    componentDir: "./components/ui",
   },
 });

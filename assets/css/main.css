@@ -1,28 +1,3 @@
-:root {
-  --gray-10: 255 255 255;
-  --gray-20: 240 240 240;
-  --gray-30: 226 226 226;
-  --gray-40: 174 174 174;
-  --gray-50: 145 145 145;
-  --gray-60: 118 118 118;
-  --gray-70: 75 75 75;
-  --gray-80: 61 61 61;
-  --gray-90: 53 53 53;
-  --primary: 8 192 137;
-  --primary-muted: 232 255 238;
-  --focus: 238 253 248;
-  --hover: 253 255 255;
-  --border: 217 224 230;
-  --accent: 0 56 141;
-  --background: 243 246 248;
-
-  --radius: 8px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 html {
   font-size: 16px;
   height: 100%;
