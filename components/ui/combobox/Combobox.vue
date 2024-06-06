@@ -4,87 +4,82 @@ import {
   ComboboxAnchor,
   ComboboxContent,
   ComboboxEmpty,
-  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
-  ComboboxLabel,
   ComboboxRoot,
-  ComboboxSeparator,
   ComboboxTrigger,
   ComboboxViewport,
 } from "radix-vue";
-// import { Icon } from "@iconify/vue";
+import type { ComboboxOption } from "~/types/ui";
 
-const v = ref("");
-const options = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"];
-const vegetables = ["Aubergine", "Broccoli", "Carrot", "Courgette", "Leek"];
+const selectedValue = ref("");
+
+const props = defineProps<{
+  options: ComboboxOption[];
+  onSelect: (value: string) => void;
+  onScrollEnd?: () => void;
+}>();
+
+const selectOption = (option: ComboboxOption) => {
+  selectedValue.value = option.label;
+  props.onSelect(option.value);
+};
+
+const lastScrollHeight = ref<number | null>(null);
+const scrollable = ref<HTMLElement | null>(null);
+const handleScroll = () => {
+  if (scrollable.value) {
+    const { scrollTop, scrollHeight, clientHeight } = scrollable.value;
+    if (!lastScrollHeight || scrollHeight != lastScrollHeight.value) {
+      const scrollPercentage = (scrollTop + clientHeight) / scrollHeight;
+      if (scrollPercentage >= 0.7) {
+        props.onScrollEnd && props.onScrollEnd();
+        lastScrollHeight.value = scrollHeight;
+      }
+    }
+  }
+};
 </script>
 
 <template>
-  <ComboboxRoot v-model="v" class="relative">
+  <ComboboxRoot v-model="selectedValue" class="relative w-full">
     <ComboboxAnchor
-      class="min-w-[160px] inline-flex items-center justify-between w-full h-10 text-sm rounded-sm border-2 border-gray-30 bg-gray-10 hover:border-gray-40 focus:border-primary overflow-hidden px-4 outline-none"
+      class="min-w-[160px] inline-flex items-center justify-between w-full h-12 text-sm rounded-sm border-2 border-gray-30 bg-gray-10 hover:border-gray-40 focus:border-primary overflow-hidden outline-none"
     >
-      <ComboboxTrigger class="w-full inline-flex items-center justify-between">
+      <ComboboxTrigger
+        class="w-full h-full inline-flex items-center justify-between"
+      >
         <ComboboxInput
-          class="!bg-transparent outline-none text-grass11 h-full selection:bg-grass5 placeholder-mauve8 flex-1"
+          class="!bg-transparent outline-none text-grass11 h-full selection:bg-grass5 placeholder-mauve8 flex-1 px-4"
           placeholder="Placeholder..."
         />
       </ComboboxTrigger>
     </ComboboxAnchor>
 
     <ComboboxContent
-      class="absolute z-10 w-full mt-1 min-w-[160px] bg-gray-10 overflow-hidden rounded shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
+      class="absolute z-10 w-full mt-1 min-w-[160px] bg-gray-10 overflow-hidden rounded shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFad"
     >
       <ComboboxViewport class="p-[5px]">
-        <ComboboxEmpty
-          class="text-mauve8 text-xs font-medium text-center py-2"
-        />
-
-        <ComboboxGroup>
-          <ComboboxLabel class="px-[25px] text-xs leading-[25px] text-mauve11">
-            Fruits
-          </ComboboxLabel>
+        <div
+          class="w-full max-h-60 overflow-auto scrollable flex flex-col scrollbar-hide"
+          ref="scrollable"
+          @scroll="handleScroll"
+        >
+          <ComboboxEmpty
+            class="text-mauve8 text-xs font-medium text-center py-2"
+          />
 
           <ComboboxItem
-            v-for="(option, index) in options"
+            v-for="(option, index) in props.options"
             :key="index"
-            class="text-[13px] leading-none text-grass11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-grass9 data-[highlighted]:text-grass1"
-            :value="option"
+            class="text-sm leading-none text-grass11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] py-2 relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary/70 data-[highlighted]:text-primary-foreground cursor-pointer"
+            :value="option.label"
+            @click="selectOption(option)"
           >
-            <ComboboxItemIndicator
-              class="absolute left-0 w-[25px] inline-flex items-center justify-center"
-            >
-              <!-- <Icon icon="radix-icons:check" /> -->
-            </ComboboxItemIndicator>
-            <span>
-              {{ option }}
-            </span>
+            <span>{{ option.label }}</span>
+            <!-- Always display label -->
           </ComboboxItem>
-          <ComboboxSeparator class="h-[1px] bg-grass6 m-[5px]" />
-        </ComboboxGroup>
-
-        <ComboboxGroup>
-          <ComboboxLabel class="px-[25px] text-xs leading-[25px] text-mauve11">
-            Vegetables
-          </ComboboxLabel>
-          <ComboboxItem
-            v-for="(option, index) in vegetables"
-            :key="index"
-            class="text-[13px] leading-none text-grass11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-grass9 data-[highlighted]:text-grass1"
-            :value="option"
-          >
-            <ComboboxItemIndicator
-              class="absolute left-0 w-[25px] inline-flex items-center justify-center"
-            >
-              <!-- <Icon icon="radix-icons:check" /> -->
-            </ComboboxItemIndicator>
-            <span>
-              {{ option }}
-            </span>
-          </ComboboxItem>
-        </ComboboxGroup>
+        </div>
       </ComboboxViewport>
     </ComboboxContent>
   </ComboboxRoot>
