@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCountryStore } from "~/stores/country";
+
+const country = useCountryStore();
+await country.fetchCountryList();
+</script>
 
 <template>
   <main

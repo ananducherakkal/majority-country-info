@@ -58,7 +58,7 @@ export type CountryRaw = {
 // Type definition for a country used in the country listing
 export type CountryListing = {
   name: string;
-  common_nmae: string;
+  common_name: string;
   flag: string;
   id: string;
 };

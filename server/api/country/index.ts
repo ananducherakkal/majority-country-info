@@ -9,7 +9,7 @@ export default defineEventHandler(
     const countryList: CountryListing[] | undefined = rawCountryList?.map(
       (country) => ({
         name: country.name.official,
-        common_nmae: country.name.common,
+        common_name: country.name.common,
         flag: country.flag,
         id: country.ccn3,
       })
