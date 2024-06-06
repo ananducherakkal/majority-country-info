@@ -1,9 +1,3 @@
-<template>
-  <div class="w-full min-h-screen flex flex-col">
-    <slot />
-  </div>
-</template>
-
 <script setup lang="ts">
 useHead({
   title: "CountryInfo",
@@ -12,5 +6,11 @@ useHead({
   ],
 });
 </script>
+
+<template>
+  <div class="w-full min-h-screen flex flex-col">
+    <slot />
+  </div>
+</template>
 
 <style lang="scss" scoped></style>

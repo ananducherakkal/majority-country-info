@@ -1,42 +1,33 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from "vue";
-import { useCountryStore } from "~/stores/country";
+import { useSelectorSection } from "~/composables/useSelectorSection";
 
-const country = useCountryStore();
-
-const options = computed(() => {
-  return (
-    country.list?.map((eachCountry) => ({
-      label: eachCountry.common_name,
-      value: eachCountry.id,
-      icon: eachCountry.flag,
-    })) || []
-  );
-});
-
-const onSelect = (value: string) => {
-  country.setSelectedId(value);
-};
-
-const onSubmit = () => {
-  country.fetchDetails();
-};
+const { country, countryDropDownOptions, onSelect, onSubmit } =
+  useSelectorSection();
 </script>
 
 <template>
-  <div
+  <section
     class="w-full h-fit md:h-full flex flex-col justify-center items-center p-10"
+    aria-label="country selection section"
   >
     <div class="w-full max-w-96 flex flex-col justify-center items-center">
-      <h2 class="mb-16 text-3xl font-bold text-primary">Country Info</h2>
+      <h2 class="mb-16 text-3xl font-bold text-gray-90">Country Info</h2>
 
       <Combobox
         placeholder="Select country"
         class=""
-        :options="options"
+        :options="countryDropDownOptions"
         :onSelect="onSelect"
+        aria-label="country selector"
       />
-      <Button class="mt-4 ml-auto" @click="onSubmit"> Submit </Button>
+      <Button
+        class="mt-4 ml-auto"
+        type="submit"
+        aria-label="submit country selection"
+        @click="onSubmit"
+      >
+        Submit
+      </Button>
     </div>
-  </div>
+  </section>
 </template>

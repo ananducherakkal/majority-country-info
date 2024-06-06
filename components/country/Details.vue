@@ -9,14 +9,12 @@ const country = useCountryStore();
     v-if="country.details"
     class="sm:w-full sm:max-w-96 h-fit flex flex-col space-y-10 items-center sm:items-start"
   >
-    <div class="flex items-end space-x-2">
-      <h3 class="text-2xl font-bold">
-        {{ country.details.name }}
-      </h3>
-      <div class="text-lg">
+    <h3 class="text-2xl font-bold" aria-label="selected country name">
+      {{ country.details.name }}
+      <span class="text-lg" aria-label="selected country flag">
         {{ country.details.flag }}
-      </div>
-    </div>
+      </span>
+    </h3>
     <div class="w-full grid sm:grid-cols-2auto gap-6 sm:justify-between">
       <CountryDetailsItem
         label="Official name"
@@ -41,6 +39,7 @@ const country = useCountryStore();
       <NuxtImg
         :src="country.details.flags.png"
         :alt="country.details.flags.alt"
+        :aria-label="country.details.flags.alt"
         width="150px"
         height="100px"
         class="h-32 w-40 object-contain"
@@ -48,7 +47,8 @@ const country = useCountryStore();
       <a
         :href="country.details.googleMaps"
         target="_blank"
-        class="text-primary text-xl font-bold mt-6 flex items-end space-x-2 cursor-pointer"
+        aria-label="open google maps in new tab"
+        class="text-blue-700 text-xl font-bold mt-6 flex items-end space-x-2 cursor-pointer"
       >
         <div>Google maps</div>
         <div><IconArrowBox /></div>
