@@ -1,3 +1,8 @@
+<!--
+Component: CountryDetails
+Description: This component displays information about the selected country. It is used in CountryDetailsSection.
+-->
+
 <script setup lang="ts">
 import { useCountryStore } from "~/stores/country";
 

@@ -1,3 +1,8 @@
+<!--
+Component: CountryDetailsError
+Description: This component displays error screen when there is data fetching error. It is used in CountryDetailsSection.
+-->
+
 <template>
   <div class="p-10 flex flex-col justify-center items-center space-y-6">
     <div class="w-full max-w-[40%] h-auto">

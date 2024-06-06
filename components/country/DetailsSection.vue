@@ -1,3 +1,8 @@
+<!--
+Component: CountryDetailsSection
+Description: This component displays country details. It is used in Home page.
+-->
+
 <script setup lang="ts">
 const country = useCountryStore();
 </script>

@@ -1,3 +1,8 @@
+<!--
+Component: CountryDetailsItem
+Description: This component displays label and value for displaying country details. It is used in CountryDetailsSection.
+-->
+
 <script setup lang="ts">
 const props = defineProps<{
   label: string;

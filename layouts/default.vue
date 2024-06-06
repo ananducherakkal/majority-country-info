@@ -1,3 +1,5 @@
+<!-- Default layout -->
+
 <script setup lang="ts">
 useHead({
   title: "CountryInfo",

@@ -1,3 +1,9 @@
+/*
+This is used in CountrySelectorSection to:
+- convert country list to combobox suitable options list
+- set and fetch details about country
+*/
+
 import { computed } from "vue";
 import type { ComboboxOption } from "~/types/ui";
 

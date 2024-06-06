@@ -1,3 +1,8 @@
+<!--
+Component: CountrySelectorSection
+Description: This component used to select and set country to show details. It is used in Home page.
+-->
+
 <script setup lang="ts">
 import { useSelectorSection } from "~/composables/useSelectorSection";
 

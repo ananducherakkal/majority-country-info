@@ -1,23 +1,29 @@
-# Nuxt 3 Minimal Starter
+# Country Info
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Country Info is a web application that allows you to explore information about countries from around the world. You can select a country from a dropdown menu and get access to information, including the country's name, currency, flag, capital, and much more.
+
+## Node version
+
+```bash
+^20.10.0
+```
 
 ## Setup
 
-Make sure to install the dependencies:
+Copy .env file from .env_sample
+
+```bash
+cp .env_sample .env
+```
+
+Install dependencies
 
 ```bash
 # npm
 npm install
 
-# pnpm
-pnpm install
-
 # yarn
 yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -28,14 +34,8 @@ Start the development server on `http://localhost:3000`:
 # npm
 npm run dev
 
-# pnpm
-pnpm run dev
-
 # yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -46,14 +46,8 @@ Build the application for production:
 # npm
 npm run build
 
-# pnpm
-pnpm run build
-
 # yarn
 yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -62,14 +56,18 @@ Locally preview production build:
 # npm
 npm run preview
 
-# pnpm
-pnpm run preview
-
 # yarn
 yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Testing
+
+Run test cases:
+
+```bash
+# npm
+npm run test
+
+# yarn
+yarn test
+```

@@ -1,4 +1,4 @@
-import type { CountryDetails, CountryListing } from "~/types/country";
+import type { CountryDetails, CountryListing } from "@/types/country";
 
 type State = {
   countryList?: CountryListing[];

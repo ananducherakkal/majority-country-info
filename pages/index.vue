@@ -1,3 +1,6 @@
+<!-- Home page
+To select and view details about country -->
+
 <script setup lang="ts">
 import { useCountryStore } from "~/stores/country";
 

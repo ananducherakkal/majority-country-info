@@ -1,3 +1,7 @@
+/*
+To fetch and cache country list from api
+*/
+
 import axios from "axios";
 import NodeCache from "node-cache";
 import type { CountryRaw } from "@/types/country";
