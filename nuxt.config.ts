@@ -7,13 +7,13 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@pinia/nuxt",
     "@nuxt/test-utils/module",
-    "@nuxt/image"
+    "@nuxt/image",
   ],
   css: ["~/assets/css/main.css"],
   googleFonts: {
     families: {
       "Open Sans": {
-        wght: [400, 600, 700],
+        wght: [400, 500, 600, 700],
       },
     },
     subsets: ["latin"],
