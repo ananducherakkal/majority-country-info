@@ -2,7 +2,7 @@
 import { useCountryStore } from "~/stores/country";
 
 const country = useCountryStore();
-await country.fetchCountryList();
+await country.fetchList();
 </script>
 
 <template>

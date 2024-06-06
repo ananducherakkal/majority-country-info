@@ -1,1 +1,5 @@
-export type ComboboxOption = { label: string; value: string };
+export type ComboboxOption = {
+  label: string;
+  icon?: any;
+  value: string;
+};

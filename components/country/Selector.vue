@@ -3,19 +3,23 @@ import { computed, ref, onMounted } from "vue";
 import { useCountryStore } from "~/stores/country";
 
 const country = useCountryStore();
-const mouted = ref(false);
 
 const options = computed(() => {
   return (
     country.list?.map((eachCountry) => ({
       label: eachCountry.common_name,
       value: eachCountry.id,
+      icon: eachCountry.flag,
     })) || []
   );
 });
 
 const onSelect = (value: string) => {
-  country.fetchCountryDetails(value);
+  country.setSelectedId(value);
+};
+
+const onSubmit = () => {
+  country.fetchDetails();
 };
 </script>
 
@@ -32,7 +36,7 @@ const onSelect = (value: string) => {
         :options="options"
         :onSelect="onSelect"
       />
-      <Button class="mt-4 ml-auto"> Submit </Button>
+      <Button class="mt-4 ml-auto" @click="onSubmit"> Submit </Button>
     </div>
   </div>
 </template>

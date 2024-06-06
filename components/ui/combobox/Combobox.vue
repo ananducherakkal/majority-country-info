@@ -72,10 +72,11 @@ const handleScroll = () => {
           <ComboboxItem
             v-for="(option, index) in props.options"
             :key="index"
-            class="text-sm leading-none text-grass11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] py-2 relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary/70 data-[highlighted]:text-primary-foreground cursor-pointer"
+            class="text-sm leading-none text-grass11 rounded-[3px] flex items-center h-[25px] pr-[15px] pl-[25px] py-2 relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary/70 data-[highlighted]:text-primary-foreground cursor-pointer"
             :value="option.label"
             @click="selectOption(option)"
           >
+            <span v-if="option.icon" class="mr-2">{{ option.icon }}</span>
             <span>{{ option.label }}</span>
             <!-- Always display label -->
           </ComboboxItem>
