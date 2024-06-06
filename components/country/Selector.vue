@@ -15,7 +15,7 @@ const options = computed(() => {
 });
 
 const onSelect = (value: string) => {
-  console.log(value);
+  country.fetchCountryDetails(value);
 };
 </script>
 

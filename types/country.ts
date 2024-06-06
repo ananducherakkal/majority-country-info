@@ -66,6 +66,7 @@ export type CountryListing = {
 // Type definition for a country used in the country details
 export type CountryDetails = {
   name: string;
+  official_name: string;
   currencies: { name: string; symbol: string }[];
   capital: string[];
   languages: string[];

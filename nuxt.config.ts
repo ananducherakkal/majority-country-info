@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@pinia/nuxt",
     "@nuxt/test-utils/module",
+    "@nuxt/image"
   ],
   css: ["~/assets/css/main.css"],
   googleFonts: {

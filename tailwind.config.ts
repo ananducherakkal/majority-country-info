@@ -64,6 +64,9 @@ module.exports = {
           foreground: "rgb(var(--gray-90) / <alpha-value>)",
         },
       },
+      gridTemplateColumns: {
+        "2auto": "auto auto",
+      },
       maxWidth: {
         content: "1400px",
       },

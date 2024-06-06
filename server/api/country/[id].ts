@@ -17,7 +17,8 @@ export default defineEventHandler(
 
     // Convert the raw country data to the format required by CountryDetails
     const countryDetails: CountryDetails = {
-      name: rawCountry.name.official,
+      name: rawCountry.name.common,
+      official_name: rawCountry.name.official,
       currencies: Object.values(rawCountry.currencies),
       capital: rawCountry.capital,
       languages: Object.values(rawCountry.languages),
