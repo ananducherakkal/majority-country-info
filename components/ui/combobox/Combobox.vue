@@ -18,6 +18,7 @@ const props = defineProps<{
   options: ComboboxOption[];
   onSelect: (value: string) => void;
   onScrollEnd?: () => void;
+  placeholder?: string;
 }>();
 
 const selectOption = (option: ComboboxOption) => {
@@ -51,7 +52,7 @@ const handleScroll = () => {
       >
         <ComboboxInput
           class="!bg-transparent outline-none text-grass11 h-full selection:bg-grass5 placeholder-mauve8 flex-1 px-4"
-          placeholder="Placeholder..."
+          :placeholder="placeholder || 'Type here'"
         />
       </ComboboxTrigger>
     </ComboboxAnchor>
